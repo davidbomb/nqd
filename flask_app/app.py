@@ -4,11 +4,12 @@ import pymongo
 from flask import Flask
 from flask import request
 import datetime
+import config as cfg
 
 
 app = Flask(__name__)
 
-client = pymongo.MongoClient('mongodb://localhost:27017/')
+client = cfg.client
 db = client['dashboard']
 
 collectionNfc = db['nfc']
@@ -17,10 +18,16 @@ collectionQuividiGender = db['quividiGender']
 collectionQuividiMood = db['quividiMood']
 collectionQuividiEntrance = db['quividiEntrance']
 
+
+
+
 collectionUser = db['users']
+collectionPosts = db['posts']
 
 
-
+@app.route('/accueil')
+def welcome():
+    return "<h1>Welcome to the Website !</h1>"
 
 #====================================USERS========================================
 @app.route('/users', methods=['POST'])
