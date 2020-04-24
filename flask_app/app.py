@@ -5,9 +5,11 @@ from flask import Flask
 from flask import request
 import datetime
 import config as cfg
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 client = cfg.client
 db = client['dashboard']

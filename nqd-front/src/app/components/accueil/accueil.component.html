@@ -1,1 +1,17 @@
-<p>accueil works!</p>
+<p> ACCUEIL </p>
+  <table>
+  <thead class="thead-default table-header">
+    <tr>
+      <th scope="col">userID</th>
+      <th scope="col">username</th>
+      <th scope="col">password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user._id}}</td>
+      <td>{{user.username}} </td>
+      <td>{{user.password}}</td>
+    </tr>
+  </tbody>
+</table>
