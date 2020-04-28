@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "nqd-front"
+    }
+  },
+  "defaultProject": "nqd-front",
+  "cli": {
+    "analytics": "3728852b-ae77-42bb-8262-4f633debdd2c"
+  }
 }
