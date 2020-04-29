@@ -24,3 +24,32 @@ table {
     font-family: sans-serif;
     font-size: .8rem;
 }
+
+h1 {
+    font-size: 1.2em;
+    color: #999;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 2em;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .router{
+    padding: 5px 10px 5px 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  nav a:visited, a:link {
+    color: #607d8b;
+  }
+  nav a:hover {
+    color: #039be5;
+    background-color: #cfd8dc;
+  }
+  .router.active {
+    color: #039be5;
+  }
