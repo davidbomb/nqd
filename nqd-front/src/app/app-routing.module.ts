@@ -5,9 +5,10 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 
 
 const routes: Routes = [
-  { path: 'route1', component: AccueilComponent },
-  { path: 'route2', component: AccueilComponent },
-  { path: 'route3', component: AccueilComponent },
+  // { path: '/', component:  },
+  { path: 'histoire', component: AccueilComponent },
+  { path: 'missions', component: AccueilComponent },
+  { path: 'projet-associatif', component: AccueilComponent },
   {
     path        : '**',
     pathMatch   : 'full',

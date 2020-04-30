@@ -1,0 +1,35 @@
+<nav class="nav-router">
+
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Nos quartiers demain</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="below">
+    <button mat-menu-item class="router" routerLink="/histoire" routerLinkActive="active">Notre Histoire</button>
+    <button mat-menu-item class="router" routerLink="/missions" routerLinkActive="active">Missions</button>  
+    <button mat-menu-item class="router" routerLink="/projet-associatif" routerLinkActive="active">Projet associatif</button>
+    <button mat-menu-item>Fonctionnement</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="belowMenu">Intelligence collective</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-menu-item>Ateliers créatifs</button>
+    <button mat-menu-item>Projet collaboratif</button>
+    <button mat-menu-item>Retour d'expérience</button>
+    <button mat-menu-item>Vers une fédération de collectif</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Urbanisme et droits citoyens</button>
+  <mat-menu #beforeMenu="matMenu" yPosition="below">
+    <button mat-menu-item>PLU - PLUI</button>
+    <button mat-menu-item>Construction dans le 12ème</button>
+    <button mat-menu-item>Circulation dans nos avenues</button>
+  </mat-menu>
+
+
+  <button mat-button [matMenuTriggerFor]="afterMenu">Presse</button>
+  <mat-menu #afterMenu="matMenu" yPosition="below">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  
+</nav>
+
+<router-outlet></router-outlet>
