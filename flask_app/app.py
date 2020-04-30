@@ -6,6 +6,7 @@ from flask import request
 import datetime
 import config as cfg
 from flask_cors import CORS
+from bson import ObjectId
 
 
 app = Flask(__name__)
@@ -23,8 +24,8 @@ collectionQuividiEntrance = db['quividiEntrance']
 
 
 
-collectionUser = db['users']
-collectionPosts = db['posts']
+userCollection = db['users']
+articleCollection = db['articles']
 
 
 @app.route('/accueil')
@@ -40,14 +41,14 @@ def insert_user():
     if req_data['password'] == None:
         return ('ERR2', 400)
 
-    collectionUser.insert(req_data)
+    userCollection.insert(req_data)
     #req_data['_id'] = str(req_data['_id'])
     return (json.dumps(req_data, default = datetime_to_string), 201)
 
 
 @app.route('/users')
 def get_user():
-    documents = collectionUser.find()
+    documents = userCollection.find()
     response = []
     for document in documents:
         document['_id'] = str(document['_id'])
@@ -60,6 +61,42 @@ def get_users_stat():
     response = dict((s,collectionNfc.find({'bottle':s}).count()) for s in labels)
     return json.dumps(response)
 
+
+#====================================ARTICLES========================================
+@app.route('/articles', methods=['POST'])
+def save_article():
+    req_data = request.get_json()
+    ## TO DO: Verification article conforme
+
+    articleCollection.insert(req_data)
+    #req_data['_id'] = str(req_data['_id'])
+    return (json.dumps(req_data, default = datetime_to_string), 201)
+
+
+
+@app.route('/articles', methods=['GET'])
+def get_all_articles():
+    documents = articleCollection .find()
+    response = []
+    for document in documents:
+        document['_id'] = str(document['_id'])
+        response.append(document)
+    return json.dumps(response, default = datetime_to_string)
+
+
+
+@app.route('/articles/<id>', methods=['GET'])
+def get_article(id):
+    article = articleCollection .find_one({"_id":ObjectId(id)})
+    response = []
+    if article == None:
+        return (response, 404)
+    else:
+        article['_id'] = str(article['_id'])
+        response.append(article)
+        return json.dumps(response, default = datetime_to_string)
+
+## DELETE, PUT, COUNT, ...
 
 
 
