@@ -34,13 +34,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     ErrorPageComponent,
-    HeaderComponent 
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent 
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     RouterModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    FormsModule,
     MatButtonModule,
     MatDialogModule,
     MatMenuModule,
@@ -60,7 +66,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
  
   providers: [
-    UserService
+    UserService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

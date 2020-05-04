@@ -7,6 +7,9 @@ import datetime
 import config as cfg
 from flask_cors import CORS
 from bson import ObjectId
+import models as models
+from usersApi import users_api
+from articlesApi import articles_api
 
 
 app = Flask(__name__)
@@ -24,6 +27,9 @@ collectionQuividiEntrance = db['quividiEntrance']
 
 
 
+app.register_blueprint(users_api)
+app.register_blueprint(articles_api)
+
 userCollection = db['users']
 articleCollection = db['articles']
 
@@ -32,103 +38,31 @@ articleCollection = db['articles']
 def welcome():
     return "<h1>Welcome to the Website !</h1>"
 
-#====================================USERS========================================
-@app.route('/users', methods=['POST'])
-def insert_user():
-    req_data = request.get_json()
-    if req_data['username'] == None:
-        return ('ERR1', 400)
-    if req_data['password'] == None:
-        return ('ERR2', 400)
-
-    userCollection.insert(req_data)
-    #req_data['_id'] = str(req_data['_id'])
-    return (json.dumps(req_data, default = datetime_to_string), 201)
-
-
-@app.route('/users')
-def get_user():
-    documents = userCollection.find()
-    response = []
-    for document in documents:
-        document['_id'] = str(document['_id'])
-        response.append(document)
-    return json.dumps(response, default = datetime_to_string)
-
-@app.route('/users/stats')
-def get_users_stat():
-    labels = ['blanc', 'rouge', 'rose']
-    response = dict((s,collectionNfc.find({'bottle':s}).count()) for s in labels)
-    return json.dumps(response)
-
-
-#====================================ARTICLES========================================
-
-@app.route('/articles', methods=['GET'])
-def get_all_articles():
-    articles = articleCollection.find()
-    response = []
-    for article in articles:
-        article['_id'] = str(article['_id'])
-        response.append(article)
-    return json.dumps(response, default = datetime_to_string)
-
-
-
-@app.route('/articles/<id>', methods=['GET'])
-def get_article(id):
-    article = articleCollection.find_one({"_id":ObjectId(id)})
-    response = []
-    if article == None:
-        return ('Article not found', 404)
-    else:
-        article['_id'] = str(article['_id'])
-        response.append(article)
-        return json.dumps(response, default = datetime_to_string)
-
-
-
-@app.route('/articles', methods=['POST'])
-def save_article():
-    req_data = request.get_json()
-    ## TO DO: Verification article conforme
-
-    articleCollection.insert(req_data)
-    #req_data['_id'] = str(req_data['_id'])
-    return (json.dumps(req_data, default = datetime_to_string), 201)
-
-
-@app.route('/articles', methods=['PUT'])
-def update_article():
-    article = request.get_json()
-    ## TO DO: Verification article conforme
-    if articleCollection.find_one({"_id":ObjectId(article['_id'])}) == None:
-        return ('Article not found', 404)
+#====================================LOGIN========================================
+@app.route('/login', methods=['POST'])
+def try_login_user():
+    user = request.get_json()
+    print(user)
+    userdb = userCollection.find_one({"username":user['username']})
+    if userdb == None:
+        return ('You are not registrated, create an account before', 404)
+    userdb['_id'] = str(userdb['_id'])
+    print(userdb)
+    ## FAIRE LE HASHAGE DES MDP !!!
+    if user['password'] == userdb['password']:
+        # GENERATE JWT
+        jwt = models.encode_auth_token(userdb['_id'])
+        print("jwt : " + str(jwt))
+        decoded_jwt = models.decode_auth_token(jwt)
+        print(decoded_jwt)
+        return (json.dumps(str(jwt), default = datetime_to_string), 201)
     
-    articleCollection.update({"_id":ObjectId(article['_id'])},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'] }})  
-    return (json.dumps(article, default = datetime_to_string), 201)
+    else :
+        # Wrong password
+        return (json.dumps(user, default = datetime_to_string), 400)
 
-
-
-@app.route('/articles/<id>', methods=['DELETE'])
-def delete_article(id):
-    deleted_article = articleCollection.remove({"_id":ObjectId(id)})     
-    response = []
-    if deleted_article['n'] == 0:       # n is the number of deleted articles returned by the request
-        return ('Article not found', 404)
-    else:
-        response.append(deleted_article)
-        return json.dumps(response, default = datetime_to_string)
-
-
-
-
-
-
-
-
-
-
+    
+    return (json.dumps(userdb, default = datetime_to_string), 201)
 
 
 
