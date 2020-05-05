@@ -1,49 +1,45 @@
 <nav class="nav-router" style="background-color: #1976d2;">
 
-  <button mat-button style="width: 100px!important; height: 70px!important;">
+  <button mat-button style="width: 100px!important; height: 70px!important;" class="router" routerLink="/accueil" routerLinkActive="active">
     <img src="assets/logo/nqd-logo.png" width="80%" height="80%">
   </button>
 
-  <button mat-button [matMenuTriggerFor]="aboveMenu">Nos quartiers demain</button>
-  <mat-menu #aboveMenu="matMenu" yPosition="below">
-    <button mat-menu-item class="router" routerLink="/histoire" routerLinkActive="active">Qui sommes-nous</button>
-    <button mat-menu-item class="router" routerLink="/histoire" routerLinkActive="active">Notre fonctionnement</button>
-    <button mat-menu-item class="router" routerLink="/missions" routerLinkActive="active">Nos actions</button>
-    <button mat-menu-item class="router" routerLink="/projet-associatif" routerLinkActive="active">Nous aider</button>
+  <button mat-button [matMenuTriggerFor]="menu1">Nos quartiers demain</button>
+  <mat-menu #menu1="matMenu" yPosition="below">
+    <button mat-menu-item class="router" routerLink="/qui-sommes-nous" routerLinkActive="active">Qui sommes-nous</button>
+    <button mat-menu-item class="router" routerLink="/notre-fonctionnement" routerLinkActive="active">Notre fonctionnement</button>
+    <button mat-menu-item class="router" routerLink="/nos-actions" routerLinkActive="active">Nos actions</button>
+    <button mat-menu-item class="router" routerLink="/nous-aider" routerLinkActive="active">Nous aider</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="belowMenu">Hôpital privé Saint Barnabé</button>
-  <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Localisatin</button>
-    <button mat-menu-item>L'hôpital</button>
-    <button mat-menu-item>Impact environnementaux et urbanistiques</button>
+  
+  <button mat-button [matMenuTriggerFor]="menu2">Hôpital privé Saint Barnabé</button>
+  <mat-menu #menu2="matMenu" yPosition="below">
+    <button mat-menu-item class="router" routerLink="/localisation" routerLinkActive="active">Localisation</button>
+    <button mat-menu-item class="router" routerLink="/hopital" routerLinkActive="active">L'hôpital</button>
+    <button mat-menu-item class="router" routerLink="/impact-environnementaux-et-urbanistique" routerLinkActive="active">Impact environnementaux et urbanistiques</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="beforeMenu">Projet alternatif</button>
-  <mat-menu #beforeMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Description</button>
-    <button mat-menu-item>Les espaces </button>
-    <button mat-menu-item>Le forum</button>
-    <button mat-menu-item>La gouvernance du ties-lieu</button>
-    <button mat-menu-item>L'implication citoyenne</button>>
+  <button mat-button [matMenuTriggerFor]="menu3">Projet alternatif</button>
+  <mat-menu #menu3="matMenu" yPosition="below">
+    <button mat-menu-item class="router" routerLink="/description" routerLinkActive="active">Description</button>
+    <button mat-menu-item class="router" routerLink="/les-espaces" routerLinkActive="active">Les espaces </button>
+    <button mat-menu-item class="router" routerLink="/le-forum" routerLinkActive="active">Le forum</button>
+    <button mat-menu-item class="router" routerLink="/la-gouvernance-du-tiers-lieu" routerLinkActive="active">La gouvernance du tiers-lieu</button>
+    <button mat-menu-item class="router" routerLink="/implication-citoyenne" routerLinkActive="active">L'implication citoyenne</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="beforeMenu">Intelligence collective et droit citoyen</button>
-  <mat-menu #beforeMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Etapes de la construction du projet</button>
-    <button mat-menu-item>Droit citoyen</button>
-    <button mat-menu-item>Maintenant</button>
+  <button mat-button [matMenuTriggerFor]="menu4">Intelligence collective et droit citoyen</button>
+  <mat-menu #menu4="matMenu" yPosition="below">
+    <button mat-menu-item class="router" routerLink="/etape-de-la-construction-du-projet" routerLinkActive="active">Etapes de la construction du projet</button>
+    <button mat-menu-item class="router" routerLink="/droit-citoyen" routerLinkActive="active">Droit citoyen</button>
+    <button mat-menu-item class="router" routerLink="/maintenant" routerLinkActive="active">Maintenant</button>
   </mat-menu>
 
 
   <button mat-button>Contact</button>
 
-  <button mat-button [matMenuTriggerFor]="afterMenu">Presse</button>
-  <mat-menu #afterMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-    <button mat-menu-item>Item 3</button>
-  </mat-menu>
+  <button mat-button>Presse</button>
 
   <button mat-button>
     <img src="assets/logo/facebook.png" width="100%" height="100%">
