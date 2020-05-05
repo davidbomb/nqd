@@ -1,35 +1,64 @@
-<nav class="nav-router">
+<nav class="nav-router" style="background-color: #1976d2;">
+
+  <button mat-button style="width: 100px!important; height: 70px!important;">
+    <img src="assets/logo/nqd-logo.png" width="80%" height="80%">
+  </button>
 
   <button mat-button [matMenuTriggerFor]="aboveMenu">Nos quartiers demain</button>
   <mat-menu #aboveMenu="matMenu" yPosition="below">
-    <button mat-menu-item class="router" routerLink="/histoire" routerLinkActive="active">Notre Histoire</button>
-    <button mat-menu-item class="router" routerLink="/missions" routerLinkActive="active">Missions</button>  
-    <button mat-menu-item class="router" routerLink="/projet-associatif" routerLinkActive="active">Projet associatif</button>
-    <button mat-menu-item>Fonctionnement</button>
+    <button mat-menu-item class="router" routerLink="/histoire" routerLinkActive="active">Qui sommes-nous</button>
+    <button mat-menu-item class="router" routerLink="/histoire" routerLinkActive="active">Notre fonctionnement</button>
+    <button mat-menu-item class="router" routerLink="/missions" routerLinkActive="active">Nos actions</button>
+    <button mat-menu-item class="router" routerLink="/projet-associatif" routerLinkActive="active">Nous aider</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="belowMenu">Intelligence collective</button>
+  <button mat-button [matMenuTriggerFor]="belowMenu">Hôpital privé Saint Barnabé</button>
   <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Ateliers créatifs</button>
-    <button mat-menu-item>Projet collaboratif</button>
-    <button mat-menu-item>Retour d'expérience</button>
-    <button mat-menu-item>Vers une fédération de collectif</button>
+    <button mat-menu-item>Localisatin</button>
+    <button mat-menu-item>L'hôpital</button>
+    <button mat-menu-item>Impact environnementaux et urbanistiques</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="beforeMenu">Urbanisme et droits citoyens</button>
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Projet alternatif</button>
   <mat-menu #beforeMenu="matMenu" yPosition="below">
-    <button mat-menu-item>PLU - PLUI</button>
-    <button mat-menu-item>Construction dans le 12ème</button>
-    <button mat-menu-item>Circulation dans nos avenues</button>
+    <button mat-menu-item>Description</button>
+    <button mat-menu-item>Les espaces </button>
+    <button mat-menu-item>Le forum</button>
+    <button mat-menu-item>La gouvernance du ties-lieu</button>
+    <button mat-menu-item>L'implication citoyenne</button>>
   </mat-menu>
 
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Intelligence collective et droit citoyen</button>
+  <mat-menu #beforeMenu="matMenu" yPosition="below">
+    <button mat-menu-item>Etapes de la construction du projet</button>
+    <button mat-menu-item>Droit citoyen</button>
+    <button mat-menu-item>Maintenant</button>
+  </mat-menu>
+
+
+  <button mat-button>Contact</button>
 
   <button mat-button [matMenuTriggerFor]="afterMenu">Presse</button>
   <mat-menu #afterMenu="matMenu" yPosition="below">
     <button mat-menu-item>Item 1</button>
     <button mat-menu-item>Item 2</button>
+    <button mat-menu-item>Item 3</button>
   </mat-menu>
-  
+
+  <button mat-button>
+    <img src="assets/logo/facebook.png" width="100%" height="100%">
+  </button>
+
+  <button mat-button>
+    <img src="assets/logo/linkedin.png" width="100%" height="100%">
+  </button>
+
+  <button mat-button>
+    <img src="assets/logo/user.png" width="100%" height="100%">
+  </button>
+
 </nav>
+
+
 
 <router-outlet></router-outlet>

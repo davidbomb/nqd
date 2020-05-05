@@ -9,7 +9,6 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { HeaderComponent } from './components/header/header.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCommonModule, MatRippleModule } from '@angular/material/core';
@@ -35,12 +34,26 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { HeaderComponent } from './components/header/header.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { QuiSommesNousComponent } from './components/nos-quartier-demain/qui-sommes-nous/qui-sommes-nous.component';
+import { NotreFonctionnementComponent } from './components/nos-quartier-demain/notre-fonctionnement/notre-fonctionnement.component';
+import { NosActionsComponent } from './components/nos-quartier-demain/nos-actions/nos-actions.component';
+import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/nous-aider.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     ErrorPageComponent,
-    HeaderComponent 
+    HeaderComponent,
+    ContactComponent,
+    FooterComponent,
+    QuiSommesNousComponent,
+    NotreFonctionnementComponent,
+    NosActionsComponent,
+    NousAiderComponent 
   ],
   imports: [
     BrowserModule,
@@ -52,6 +65,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatDialogModule,
     MatMenuModule,
+    MatIconModule,
     MatTooltipModule,
     MatListModule,
     BrowserAnimationsModule,

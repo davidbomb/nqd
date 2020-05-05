@@ -1,0 +1,8 @@
+.footer-flexbox {
+    display : flex;
+    justify-content : space-evenly;
+}
+
+.footer-text {
+    color : white;
+}
