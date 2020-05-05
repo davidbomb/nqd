@@ -4,6 +4,7 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthenticationService } from './services/authentication.service';
 
 
 const routes: Routes = [
@@ -12,7 +13,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'histoire', component: AccueilComponent },
   { path: 'missions', component: AccueilComponent },
-  { path: 'projet-associatif', component: AccueilComponent },
+  {
+    path: 'projet-associatif',
+    component: RegisterComponent,
+    canActivate: [AuthenticationService]
+  },
   {
     path        : '**',
     pathMatch   : 'full',

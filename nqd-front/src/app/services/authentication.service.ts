@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthenticationService implements CanActivate{
 
   private httpHeaders: HttpHeaders;
 
-  constructor(private http: HttpClient) { }
+  private admin: boolean;
+
+  constructor(private http: HttpClient,
+    private router: Router) { }
 
   /**
    * @url /login
@@ -28,10 +32,15 @@ export class AuthenticationService {
         'Authorization': `Bearer ${token}`
     });
   }
-  ensureAuthenticated(token): Observable<any> {
+  ensureAuthenticated(): Observable<any> {
     this.setHttpHeaders();
     console.log(this.httpHeaders)
     return this.http.get("http://localhost:5000/users/status", {headers: this.httpHeaders});
+  }
+
+  isAdmin(): Observable<boolean> {
+    this.setHttpHeaders();
+    return this.http.get<boolean>("http://localhost:5000/users/isAdmin", {headers: this.httpHeaders})
   }
   
 
@@ -52,5 +61,29 @@ export class AuthenticationService {
   }
   clearSession(): void {
     localStorage.clear();
+  }
+
+  // canActivate(): Observable<boolean> {
+  //   return this.isAdmin().subscribe(
+  //     res => {
+  //       return new Observable<true>;
+  //       // res.isAdmin === "True";
+  //     },
+  //     err => {
+  //       console.log(err)
+  //       return false;
+  //     }
+  //   )
+  // }
+
+  
+
+  canActivate(): boolean {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      this.router.navigateByUrl('/login');
+      return false;
+    }
   }
 }

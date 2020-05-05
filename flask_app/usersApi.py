@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import jsonify
 import config as cfg
 import os
 import json
@@ -9,12 +10,16 @@ import datetime
 from flask_cors import CORS
 from bson import ObjectId
 import models as models
+import utils
 
 users_api = Blueprint('users_api', __name__)
+CORS(users_api)
 
 client = cfg.client
 db = client['dashboard']
 userCollection = db['users']
+
+
 
 
 
@@ -64,9 +69,11 @@ def is_admin():
     print('user_id: ' + user_id)
     user = userCollection.find_one({"_id":ObjectId(user_id)})
     if user == None:
-        return (False, 200)
+        response = jsonify({'isAdmin': 'False'})
+        return (utils.add_headers(response), 200)
     else: 
-        return (True, 200)
+        response = jsonify({'isAdmin': 'True'})
+        return (utils.add_headers(response), 200)
 
 
 
@@ -77,3 +84,6 @@ def is_admin():
 def datetime_to_string(o):
     if isinstance(o, datetime.datetime):
         return o.__str__()
+
+def add_headers(resp):
+    resp.headers.add('Access-Control-Allow-Origin', '*')

@@ -13,7 +13,12 @@ from articlesApi import articles_api
 
 
 app = Flask(__name__)
+
+# CORS.init_app(users_api, origins='http://localhost:4200')
+app.register_blueprint(users_api)
+app.register_blueprint(articles_api)
 CORS(app)
+
 
 client = cfg.client
 db = client['dashboard']
@@ -27,8 +32,6 @@ collectionQuividiEntrance = db['quividiEntrance']
 
 
 
-app.register_blueprint(users_api)
-app.register_blueprint(articles_api)
 
 userCollection = db['users']
 articleCollection = db['articles']

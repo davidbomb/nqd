@@ -8,8 +8,12 @@ from flask import request
 import datetime
 from bson import ObjectId
 import models as models
+from flask_cors import CORS
+import utils
+
 
 articles_api = Blueprint('articles_api', __name__)
+CORS(articles_api)
 
 client = cfg.client
 db = client['dashboard']

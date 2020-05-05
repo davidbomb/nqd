@@ -26,10 +26,11 @@ export class LoginComponent implements OnInit {
       token => {
         this.authenticationService.storeToken(token);
         console.log(this.authenticationService.getToken());
-        this.authenticationService.ensureAuthenticated(null).subscribe();
+        this.authenticationService.ensureAuthenticated().subscribe();
         this.router.navigateByUrl('/acceuil');
       },
       err => {
+        console.log("error in login component")
         console.log(err);
     });
   }
