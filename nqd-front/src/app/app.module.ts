@@ -44,6 +44,17 @@ import { QuiSommesNousComponent } from './components/nos-quartier-demain/qui-som
 import { NotreFonctionnementComponent } from './components/nos-quartier-demain/notre-fonctionnement/notre-fonctionnement.component';
 import { NosActionsComponent } from './components/nos-quartier-demain/nos-actions/nos-actions.component';
 import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/nous-aider.component';
+import { LocalisationComponent } from './components/hopital-prive-saint-barnabe/localisation/localisation.component';
+import { HopitalComponent } from './components/hopital-prive-saint-barnabe/hopital/hopital.component';
+import { ImpactEnvironnementauxEtUrbanistiqueComponent } from './components/hopital-prive-saint-barnabe/impact-environnementaux-et-urbanistique/impact-environnementaux-et-urbanistique.component';
+import { DescriptionComponent } from './components/projet-alternatif/description/description.component';
+import { LesEspacesComponent } from './components/projet-alternatif/les-espaces/les-espaces.component';
+import { LeForumComponent } from './components/projet-alternatif/le-forum/le-forum.component';
+import { LaGouvernanceDuTiersLieuComponent } from './components/projet-alternatif/la-gouvernance-du-tiers-lieu/la-gouvernance-du-tiers-lieu.component';
+import { ImplicationCitoyenneComponent } from './components/projet-alternatif/implication-citoyenne/implication-citoyenne.component';
+import { EtapeDeLaConstructionDuProjetComponent } from './components/intelligence-collective-et-droit-citoyen/etape-de-la-construction-du-projet/etape-de-la-construction-du-projet.component';
+import { DroitCitoyenComponent } from './components/intelligence-collective-et-droit-citoyen/droit-citoyen/droit-citoyen.component';
+import { MaintenantComponent } from './components/intelligence-collective-et-droit-citoyen/maintenant/maintenant.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +69,18 @@ import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/
     NosActionsComponent,
     NousAiderComponent,
     LoginComponent,
-    RegisterComponent 
+    RegisterComponent,
+    LocalisationComponent,
+    HopitalComponent,
+    ImpactEnvironnementauxEtUrbanistiqueComponent,
+    DescriptionComponent,
+    LesEspacesComponent,
+    LeForumComponent,
+    LaGouvernanceDuTiersLieuComponent,
+    ImplicationCitoyenneComponent,
+    EtapeDeLaConstructionDuProjetComponent,
+    DroitCitoyenComponent,
+    MaintenantComponent 
   ],
   imports: [
     BrowserModule,
