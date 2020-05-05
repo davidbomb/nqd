@@ -57,6 +57,7 @@ import { DroitCitoyenComponent } from './components/intelligence-collective-et-d
 import { MaintenantComponent } from './components/intelligence-collective-et-droit-citoyen/maintenant/maintenant.component';
 import { ArticlesListComponent } from './components/presse/articles-list/articles-list.component';
 import { ArticleService } from './services/article.service';
+import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { ArticleService } from './services/article.service';
     MaintenantComponent,
     // PresseComponent,
     ContactComponent,
-    ArticlesListComponent 
+    ArticlesListComponent,
+    CreateArticleComponent 
   ],
   imports: [
     BrowserModule,
@@ -102,7 +104,8 @@ import { ArticleService } from './services/article.service';
     MatTooltipModule,
     MatListModule,
     BrowserAnimationsModule,
-    MatCheckboxModule 
+    MatCheckboxModule,
+    MatCardModule
 
   ],
  

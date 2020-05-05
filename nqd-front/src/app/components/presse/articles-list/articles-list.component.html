@@ -2,19 +2,22 @@
     <div mat-subheader>Liste des articles</div>
     <mat-list-item *ngFor="let article of articles">
       <mat-icon mat-list-icon>Article</mat-icon>
-      <div mat-line> {{article.title}} </div>
-      <div mat-line> {{article.category}} </div>
-      <div mat-line> {{article.description}} </div>
-      <div mat-line> {{article.content}} </div>
-      <div mat-line> {{article.date}} </div>
-      <mat-divider></mat-divider>
+      <mat-card class="article-card">
+        <mat-card-header>
+            <mat-card-title><div mat-line> {{article.title}}</div></mat-card-title>
+            <mat-card-subtitle><div mat-line> {{article.category}} </div></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div mat-line> {{article.description}} </div>
+            <div mat-line id="content"><p>{{article.content}}</p></div>
+            <div mat-line><h5><i id="date">{{article.date}}</i></h5></div>
+        </mat-card-content>
+        
+        <mat-card-actions id="actions">
+            <button mat-button id="update">Modifier</button>
+            <button mat-button id="delete">Supprimer</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-divider></mat-divider> 
     </mat-list-item>
-    <mat-divider></mat-divider>
-    <!-- <div mat-subheader>Notes</div>
-    <mat-list-item *ngFor="let note of notes">
-      <mat-icon mat-list-icon>note</mat-icon>
-      <div mat-line>{{note.name}}</div>
-      <div mat-line> {{note.updated | date}} </div>
-    </mat-list-item> -->
   </mat-list>
-  

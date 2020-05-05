@@ -1,3 +1,33 @@
 .mat-list-icon {
     color: rgba(0, 0, 0, 0.54);
   }
+
+.article-card {
+  width: 70%;
+  align-items: baseline;
+  background-color: rgb(253, 247, 238);
+  position: relative;
+  margin-left: 10%;
+}
+
+#content {
+  align-items: baseline;
+  white-space: initial;
+}
+
+#date {
+  position: relative;
+  margin-left: 85%;
+}
+
+#update {
+  background-color: rgb(170, 248, 170);
+}
+#delete {
+  background-color: rgb(255, 121, 121);
+}
+
+#actions {
+  position: relative;
+  margin-left: 70%;
+}

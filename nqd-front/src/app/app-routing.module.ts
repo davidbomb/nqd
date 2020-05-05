@@ -31,6 +31,7 @@ import { MaintenantComponent } from './components/intelligence-collective-et-dro
 
 import { ContactComponent } from './components/contact/contact.component';
 import { ArticlesListComponent } from './components/presse/articles-list/articles-list.component';
+import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
 
   { path: 'contact', component: ContactComponent },
   { path: 'articles', component: ArticlesListComponent },
+  { path: 'nouvel-article', component: CreateArticleComponent },
 
 
 
