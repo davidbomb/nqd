@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
 
-export interface Section {
-  name: string;
-  updated: Date;
-}
+
 
 @Component({
   selector: 'app-articles-list',

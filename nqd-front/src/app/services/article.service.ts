@@ -19,16 +19,16 @@ export class ArticleService {
   }
 
   getArticleById(id): Observable<Article> {
-    return this.http.get<Article>('http://localhost:5000/article/' + id);
+    return this.http.get<Article>('http://localhost:5000/articles/' + id);
   }
 
   saveArticle(article) {
-    return this.http.post<Article>('http://localhost:5000/article', article);
+    return this.http.post<Article>('http://localhost:5000/articles', article);
 
   }
 
   updateArticle(article, id) {
-    return this.http.put<Article>('http://localhost:5000/article/' + id, article);
+    return this.http.put<Article>('http://localhost:5000/articles/' + id, article);
 
   }
 

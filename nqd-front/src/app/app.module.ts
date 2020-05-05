@@ -58,6 +58,7 @@ import { MaintenantComponent } from './components/intelligence-collective-et-dro
 import { ArticlesListComponent } from './components/presse/articles-list/articles-list.component';
 import { ArticleService } from './services/article.service';
 import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
+import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,9 @@ import { CreateArticleComponent } from './components/presse/create-article/creat
     MatListModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
  

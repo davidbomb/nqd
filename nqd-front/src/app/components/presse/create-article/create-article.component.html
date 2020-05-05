@@ -1,0 +1,85 @@
+<div class="container">
+    <div *ngIf="!submitted">
+        <br>
+        <h3>Saisie d'un article</h3>
+        <form [formGroup]="articleForm" (ngSubmit)="onSubmit(articleForm)">
+            <mat-card id="articleCard">
+            <div class="form-group" id="title">
+                <mat-form-field hintLabel="Max 100 caractères" appearance="fill">
+                    <mat-label>Titre</mat-label>
+                    <input matInput #titleInput maxlength="100" placeholder="Titre de l'article" 
+                    class="form-control" formControlName="title">
+                    <mat-hint align="end">{{titleInput.value?.length || 0}}/100</mat-hint>
+                    <div class="alert alert-danger" [hidden]="articleForm.controls.title.valid"></div>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="form-group" id="category">
+                <mat-form-field hintLabel="Max 25 caractères" appearance="fill">
+                    <mat-label>Categorie</mat-label>
+                    <input matInput #categoryInput maxlength="25" placeholder="Categorie" 
+                    class="form-control" formControlName="category">
+                    <mat-hint align="end">{{categoryInput.value?.length || 0}}/25</mat-hint>
+                    <div class="alert alert-danger" [hidden]="articleForm.controls.category.valid"></div>
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="form-group" id="description">
+                <mat-form-field hintLabel="Max 200 caractères" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput #descInput maxlength="200" placeholder="Description" 
+                    class="form-control" formControlName="description">
+                    <mat-hint align="end">{{descInput.value?.length || 0}}/200</mat-hint>
+                    <div class="alert alert-danger" [hidden]="articleForm.controls.description.valid"></div>
+                </mat-form-field>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group" id="content">
+                <mat-form-field appearance="fill" >
+                    <mat-label>Contenu</mat-label>
+                    <textarea matInput placeholder="Corps de l'article" 
+                    class="form-control content" formControlName="content"></textarea>
+                
+                    <div class="alert alert-danger" [hidden]="articleForm.controls.content.valid"></div>
+                </mat-form-field>
+            </div>
+
+            <br>
+            <mat-divider></mat-divider>
+            
+            <mat-card-footer>
+                <br>
+                <button mat-button type="submit" id="create" 
+                        [disabled]="!articleForm.valid">
+                        Sauvegarder
+                </button> 
+                <br>
+           </mat-card-footer>
+            
+        </mat-card>
+        </form>  
+    </div>
+
+
+
+    <div *ngIf="submitted">
+        <h3>L'article suivant vient d'être crée: </h3>
+        <mat-card class="article-card-preview">
+            <mat-card-header>
+                <mat-card-title><div mat-line> {{submittedModel.title}}</div></mat-card-title>
+                <mat-card-subtitle><div mat-line> {{submittedModel.category}} </div></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="content-preview">
+                <div mat-line> {{submittedModel.description}} </div>
+                <div mat-line id="content"><p>{{submittedModel.content}}</p></div>
+            </mat-card-content>
+            
+            <br />
+            <button mat-button id="edit" (click)="submitted=false; edit=true">Editer</button>
+        </mat-card>
+                                
+        
+    </div>    
+</div>

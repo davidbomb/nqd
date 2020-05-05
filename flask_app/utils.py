@@ -8,4 +8,7 @@ import datetime
 import models as models
 
 def add_headers(resp):
-    resp.headers.add('Access-Control-Allow-Origin', '*')
+    if type(resp) == dict:
+        resp['headers'] = {'Access-Control-Allow-Origin', '*'}
+    else:
+        resp.headers.add('Access-Control-Allow-Origin', '*')

@@ -55,20 +55,28 @@ def save_article():
     
     today = date.today().strftime("%d/%m/%Y")
     article_to_save['date'] = today
-    articleCollection.insert(article_to_save)
-    #article_to_save['_id'] = str(article_to_save['_id'])
-    return (json.dumps(article_to_save, default = datetime_to_string), 201)
+    saved_article_id = articleCollection.insert(article_to_save)
 
 
-@articles_api.route('/articles', methods=['PUT'])
-def update_article():
+    # shaping the data to send back to the Front-End
+    saved_article = article_to_save
+    saved_article['_id'] = str(saved_article_id)
+    print(saved_article)
+    return (json.dumps(saved_article, default = datetime_to_string), 201)
+
+
+@articles_api.route('/articles/<id>', methods=['PUT'])
+def update_article(id):
     article = request.get_json()
     ## TO DO: Verification article conforme
-    if articleCollection.find_one({"_id":ObjectId(article['_id'])}) == None:
+    if articleCollection.find_one({"_id":ObjectId(id)}) == None:
         return ('Article not found', 404)
     
-    articleCollection.update({"_id":ObjectId(article['_id'])},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'] }})  
-    return (json.dumps(article, default = datetime_to_string), 201)
+    updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'] }})  
+    # shaping the data to send back to the Front-End
+    updated_article = article
+    updated_article['_id'] = str(id)
+    return (json.dumps(updated_article, default = datetime_to_string), 201)
 
 
 

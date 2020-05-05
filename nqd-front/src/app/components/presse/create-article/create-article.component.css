@@ -1,0 +1,37 @@
+#create, #edit {
+    background-color: rgb(170, 248, 170);
+}
+
+/* #title, #description, #category, #content {
+    width: 200%;
+} */
+   
+
+  
+.mat-form-field {
+    width: 80%;
+}
+.content {
+    height: 250px;
+}
+
+#articleCard {
+    width: 90%;
+    position: relative;
+    margin-left: 5%;
+}
+
+
+.article-card-preview {
+    width: 70%;
+    align-items: baseline;
+    background-color: rgb(253, 247, 238);
+    position: relative;
+    margin-left: 10%;
+  }
+  
+.content-preview {
+    align-items: baseline;
+    white-space: initial;
+  }
+  

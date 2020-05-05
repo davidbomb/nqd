@@ -1,4 +1,5 @@
 export class Article {
+    _id: string;
     title: string;
     category: string;
     description: string;
