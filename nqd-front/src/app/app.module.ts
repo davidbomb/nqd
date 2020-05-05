@@ -33,6 +33,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+import { RegisterComponent } from './components/register/register.component';
 
 import { HeaderComponent } from './components/header/header.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -53,7 +56,9 @@ import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/
     QuiSommesNousComponent,
     NotreFonctionnementComponent,
     NosActionsComponent,
-    NousAiderComponent 
+    NousAiderComponent,
+    LoginComponent,
+    RegisterComponent 
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,7 @@ import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/
     RouterModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    FormsModule,
     MatButtonModule,
     MatDialogModule,
     MatMenuModule,
@@ -74,7 +80,8 @@ import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/
   ],
  
   providers: [
-    UserService
+    UserService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
