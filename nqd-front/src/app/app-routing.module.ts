@@ -29,12 +29,14 @@ import { DroitCitoyenComponent } from './components/intelligence-collective-et-d
 import { EtapeDeLaConstructionDuProjetComponent } from './components/intelligence-collective-et-droit-citoyen/etape-de-la-construction-du-projet/etape-de-la-construction-du-projet.component'
 import { MaintenantComponent } from './components/intelligence-collective-et-droit-citoyen/maintenant/maintenant.component'
 
+import { ContactComponent } from './components/contact/contact.component';
+import { ArticlesListComponent } from './components/presse/articles-list/articles-list.component';
+
+
 const routes: Routes = [
-  // { path: '/', component:  },
+  { path: '', component: AccueilComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'histoire', component: AccueilComponent },
-  { path: 'missions', component: AccueilComponent },
 
   { path: 'nos-actions', component: NosActionsComponent },
   { path: 'nous-aider', component: NousAiderComponent },
@@ -54,6 +56,10 @@ const routes: Routes = [
   { path: 'droit-citoyen', component: DroitCitoyenComponent },
   { path: 'etape-de-la-construction-du-projet', component: EtapeDeLaConstructionDuProjetComponent },
   { path: 'maintenant', component: MaintenantComponent },
+
+  { path: 'contact', component: ContactComponent },
+  { path: 'articles', component: ArticlesListComponent },
+
 
 
 

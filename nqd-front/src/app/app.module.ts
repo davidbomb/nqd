@@ -55,6 +55,8 @@ import { ImplicationCitoyenneComponent } from './components/projet-alternatif/im
 import { EtapeDeLaConstructionDuProjetComponent } from './components/intelligence-collective-et-droit-citoyen/etape-de-la-construction-du-projet/etape-de-la-construction-du-projet.component';
 import { DroitCitoyenComponent } from './components/intelligence-collective-et-droit-citoyen/droit-citoyen/droit-citoyen.component';
 import { MaintenantComponent } from './components/intelligence-collective-et-droit-citoyen/maintenant/maintenant.component';
+import { ArticlesListComponent } from './components/presse/articles-list/articles-list.component';
+import { ArticleService } from './services/article.service';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,10 @@ import { MaintenantComponent } from './components/intelligence-collective-et-dro
     ImplicationCitoyenneComponent,
     EtapeDeLaConstructionDuProjetComponent,
     DroitCitoyenComponent,
-    MaintenantComponent 
+    MaintenantComponent,
+    // PresseComponent,
+    ContactComponent,
+    ArticlesListComponent 
   ],
   imports: [
     BrowserModule,
@@ -103,7 +108,8 @@ import { MaintenantComponent } from './components/intelligence-collective-et-dro
  
   providers: [
     UserService,
-    AuthenticationService
+    AuthenticationService,
+    ArticleService
   ],
   bootstrap: [AppComponent]
 })

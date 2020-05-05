@@ -6,6 +6,7 @@ import pymongo
 from flask import Flask
 from flask import request
 import datetime
+from datetime import date
 from bson import ObjectId
 import models as models
 from flask_cors import CORS
@@ -49,12 +50,14 @@ def get_article(id):
 
 @articles_api.route('/articles', methods=['POST'])
 def save_article():
-    req_data = request.get_json()
+    article_to_save = request.get_json()
     ## TO DO: Verification article conforme
-
-    articleCollection.insert(req_data)
-    #req_data['_id'] = str(req_data['_id'])
-    return (json.dumps(req_data, default = datetime_to_string), 201)
+    
+    today = date.today().strftime("%d/%m/%Y")
+    article_to_save['date'] = today
+    articleCollection.insert(article_to_save)
+    #article_to_save['_id'] = str(article_to_save['_id'])
+    return (json.dumps(article_to_save, default = datetime_to_string), 201)
 
 
 @articles_api.route('/articles', methods=['PUT'])
