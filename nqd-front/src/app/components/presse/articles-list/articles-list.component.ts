@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 
@@ -15,7 +17,8 @@ export class ArticlesListComponent implements OnInit {
 
   articles: Array<Article>;
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.articles = new Array<Article>();
@@ -25,6 +28,7 @@ export class ArticlesListComponent implements OnInit {
 
       },
       err => {
+        this.toastr.error("Impossible d'afficher les articles", err.code)
 
       }
     )

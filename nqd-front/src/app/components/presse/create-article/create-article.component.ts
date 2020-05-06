@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
+import { ToastrService } from 'ngx-toastr';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -31,7 +32,8 @@ export class CreateArticleComponent implements OnInit {
   selectedFile: ImageSnippet;
   
   constructor(private formBuilder: FormBuilder,
-              private articleService: ArticleService) { }
+              private articleService: ArticleService,
+              private toastr: ToastrService) { }
   
   ngOnInit() {
       
@@ -53,24 +55,26 @@ export class CreateArticleComponent implements OnInit {
       console.log(value);
       this.articleService.saveArticle(value).subscribe(
         res => {
+          this.toastr.success("L'article à bien été enregistré");
           this.submitted = true;
           this.submittedModel = value;
           this.submittedModel._id = res._id;    
         },
         err => {
-          console.log(err)
+          this.toastr.error("L'article n'à pas pu être enregistré", err.code)
         }
       )
     } else if(this.edit) {
       value.image = this.model.image;
       this.articleService.updateArticle(value, this.submittedModel._id).subscribe(
         res => {
+          this.toastr.success("L'article à bien été mis à jour");
           this.submitted = true;
           this.submittedModel = value; 
           this.submittedModel._id = res._id;   
         },
         err => {
-          console.log(err)
+          this.toastr.error("L'article n'à pas pu être mis à jour", err.code)
         }
       )
     }

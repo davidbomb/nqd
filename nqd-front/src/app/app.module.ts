@@ -59,6 +59,7 @@ import { ArticlesListComponent } from './components/presse/articles-list/article
 import { ArticleService } from './services/article.service';
 import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-
     MatCheckboxModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ToastrModule.forRoot()
 
   ],
  
