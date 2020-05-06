@@ -51,6 +51,9 @@ def get_article(id):
 @articles_api.route('/articles', methods=['POST'])
 def save_article():
     article_to_save = request.get_json()
+    print(article_to_save)
+    # if article_to_save['image'] != None:
+    # utils.toByteArray(article_to_save['image'])
     ## TO DO: Verification article conforme
     
     today = date.today().strftime("%d/%m/%Y")
@@ -72,7 +75,7 @@ def update_article(id):
     if articleCollection.find_one({"_id":ObjectId(id)}) == None:
         return ('Article not found', 404)
     
-    updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'] }})  
+    updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'], 'image':article['image'] }})  
     # shaping the data to send back to the Front-End
     updated_article = article
     updated_article['_id'] = str(id)

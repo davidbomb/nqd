@@ -14,6 +14,33 @@
                 </mat-form-field>
             </div>
             <br>
+
+            <div>
+                <mat-card style="width:77%">
+                    <mat-label class="image-upload-container btn btn-bwm">
+                        <span mat-line>Uploader une Image &nbsp;&nbsp;</span>
+                        <input mat-line #imageInput formControlName="image"
+                            type="file"
+                            accept="image/*"
+                            (change)="processFile(imageInput)">
+                    </mat-label>
+                    <div *ngIf="selectedFile" class="img-preview-container">
+
+                        <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+                             [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+                        </div>
+                      
+                        <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+                          <div class="img-spinning-circle"></div>
+                        </div>
+                      
+                        <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
+                        <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Impossible d'uploader cette image</div>
+                        <button mat-button (click)="clearImage()">Supprimer l'image</button>
+                    </div>
+                </mat-card>
+            </div>
+
             <div class="form-group" id="category">
                 <mat-form-field hintLabel="Max 25 caractères" appearance="fill">
                     <mat-label>Categorie</mat-label>
@@ -71,7 +98,14 @@
                 <mat-card-title><div mat-line> {{submittedModel.title}}</div></mat-card-title>
                 <mat-card-subtitle><div mat-line> {{submittedModel.category}} </div></mat-card-subtitle>
             </mat-card-header>
+
             <mat-card-content class="content-preview">
+                <div class="img-preview-container">
+                    <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+                         [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+                    </div>
+                    <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
+                </div>
                 <div mat-line> {{submittedModel.description}} </div>
                 <div mat-line id="content"><p>{{submittedModel.content}}</p></div>
             </mat-card-content>
