@@ -70,8 +70,8 @@ export class CreateArticleComponent implements OnInit {
           this.submittedModel._id = res._id;   
           
         },
-        err => {
-          this.toastr.error("L'article n'à pas pu être enregistré", err.code)
+        error => {
+          this.toastr.error("L'article n'à pas pu être enregistré", error.status)
         }
       )
     } else if(this.edit) {
@@ -86,8 +86,8 @@ export class CreateArticleComponent implements OnInit {
           this.submittedModel = value; 
           this.submittedModel._id = res._id;   
         },
-        err => {
-          this.toastr.error("L'article n'à pas pu être mis à jour", err.code)
+        error => {
+          this.toastr.error("L'article n'à pas pu être mis à jour", error.status)
         }
       )
     }

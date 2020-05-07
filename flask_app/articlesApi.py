@@ -51,7 +51,6 @@ def get_article(id):
 @articles_api.route('/articles', methods=['POST'])
 def save_article():
     article_to_save = request.get_json()
-    print(article_to_save)
     # if article_to_save['image'] != None:
     # utils.toByteArray(article_to_save['image'])
     ## TO DO: Verification article conforme
@@ -64,14 +63,12 @@ def save_article():
     # shaping the data to send back to the Front-End
     saved_article = article_to_save
     saved_article['_id'] = str(saved_article_id)
-    print(saved_article)
     return (json.dumps(saved_article, default = datetime_to_string), 201)
 
 
 @articles_api.route('/articles/<id>', methods=['PUT'])
 def update_article(id):
     article = request.get_json()
-    print(article)
     ## TO DO: Verification article conforme
     if articleCollection.find_one({"_id":ObjectId(id)}) == None:
         return ('Article not found', 404)

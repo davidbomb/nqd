@@ -61,6 +61,8 @@ import { CreateArticleComponent } from './components/presse/create-article/creat
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { UpdateArticleComponent } from './components/presse/update-article/update-article.component';
+import { DeleteArticleComponent } from './components/presse/delete-article/delete-article.component';
 
 
 
@@ -92,7 +94,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     // PresseComponent,
     ContactComponent,
     ArticlesListComponent,
-    CreateArticleComponent 
+    CreateArticleComponent,
+    UpdateArticleComponent,
+    DeleteArticleComponent, 
+  ],
+  entryComponents: [
+    DeleteArticleComponent,
   ],
   imports: [
     BrowserModule,

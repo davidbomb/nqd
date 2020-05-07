@@ -22,16 +22,21 @@ export class ArticleService {
     return this.http.get<Article>('http://localhost:5000/articles/' + id);
   }
 
-  saveArticle(article) {
+  saveArticle(article: Article) {
     return this.http.post<Article>('http://localhost:5000/articles', article);
 
   }
 
-  updateArticle(article, id) {
+  updateArticle(article: Article, id: string): Observable<Article> {
     if(!article.image) {
       article.image = null; 
     }
     return this.http.put<Article>('http://localhost:5000/articles/' + id, article);
+
+  }
+
+  deleteArticle(id: string) {
+    return this.http.delete<Article>('http://localhost:5000/articles/' + id);
 
   }
 

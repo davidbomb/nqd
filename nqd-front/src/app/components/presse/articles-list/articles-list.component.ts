@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteArticleComponent } from '../delete-article/delete-article.component';
+import * as _ from 'lodash';
 
 
 
@@ -19,7 +22,8 @@ export class ArticlesListComponent implements OnInit {
   articles: Array<Article>;
 
   constructor(private articleService: ArticleService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.articles = new Array<Article>();
@@ -28,11 +32,38 @@ export class ArticlesListComponent implements OnInit {
         this.articles = articles;
 
       },
-      err => {
-        this.toastr.error("Impossible d'afficher les articles", err.code)
+      error => {
+        this.toastr.error("Impossible d'afficher les articles", error.status)
 
       }
     )
+  }
+
+  openDeleteArticleModal(article: Article): void {
+    const dialogRef = this.dialog.open(DeleteArticleComponent, {
+      data: {
+        // listeClasses: this.classes,
+        id: article._id
+      },
+      minWidth: '450px',
+      maxWidth: '600px'
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(
+        id => {
+          console.log(this.articles.length)
+          this.articles.filter(a => {
+            _.remove(this.articles, function(a) {
+              return a._id === id; 
+            })  
+          });
+          console.log(this.articles.length)
+
+        },
+        err => {
+
+        });
   }
 
 }

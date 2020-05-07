@@ -21,7 +21,7 @@
         
         <mat-card-actions id="actions">
             <button mat-button id="update" (click)="editClicked=true;" [disabled]="editClicked">Modifier</button>
-            <button mat-button id="delete" (click)="deleteClicked=true;" [disabled]="deleteClicked">Supprimer</button>
+            <button mat-button id="delete" (click)="openDeleteArticleModal(article)" [disabled]="deleteClicked">Supprimer</button>
         </mat-card-actions>
     </mat-card>
     <mat-divider></mat-divider> 
