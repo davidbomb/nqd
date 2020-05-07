@@ -18,21 +18,25 @@ export class ArticlesListComponent implements OnInit {
 
   editClicked: boolean = false;
   deleteClicked: boolean = false;
-
+  loading: boolean;
   articles: Array<Article>;
 
   constructor(private articleService: ArticleService,
               private toastr: ToastrService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog) {
+              this.loading = true
+               }
 
   ngOnInit(): void {
     this.articles = new Array<Article>();
     this.articleService.getAllArticles().subscribe(
       articles => {
         this.articles = articles;
+        this.loading = false;
 
       },
       error => {
+        this.loading = false;
         this.toastr.error("Impossible d'afficher les articles", error.status)
 
       }

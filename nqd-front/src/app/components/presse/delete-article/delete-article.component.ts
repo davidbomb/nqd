@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class DeleteArticleComponent implements OnInit {
 
   id: string;
+  loading: boolean;
 
   constructor(public dialogRef: MatDialogRef<DeleteArticleComponent>,
               private toastr: ToastrService,
@@ -24,12 +25,15 @@ export class DeleteArticleComponent implements OnInit {
   }
 
   onDeleteArticle() {
+    this.loading = true;
     this.articleService.deleteArticle(this.id).subscribe(
       success => {
-        this.toastr.success("L'article a été supprimé avec succès.");  
+        this.toastr.success("L'article a été supprimé avec succès.");
+        this.loading = false;
         this.dialogRef.close(this.id);
       },
       error => {
+        this.loading = false;
         if(error.status === 404) {
           this.toastr.error("Cet article n'existe pas ou a déjà été supprimé", error.status);  
         } else {

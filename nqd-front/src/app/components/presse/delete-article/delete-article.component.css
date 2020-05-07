@@ -6,3 +6,8 @@
     position: relative;
     margin-left: 50%; 
 }
+
+.lds-spinner {
+    position: relative;
+    margin-left: 40%;
+}

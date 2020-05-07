@@ -1,5 +1,6 @@
 <mat-list>
-    <div mat-subheader>Liste des articles</div>
+    <!-- <div mat-subheader>Liste des articles</div> -->
+    <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <mat-list-item *ngFor="let article of articles">
       <mat-icon mat-list-icon>Article</mat-icon>
       <mat-card class="article-card">

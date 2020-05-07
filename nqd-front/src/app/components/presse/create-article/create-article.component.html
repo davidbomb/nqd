@@ -51,7 +51,7 @@
                     <div class="alert alert-danger" [hidden]="articleForm.controls.category.valid"></div>
                 </mat-form-field>
             </div>
-            <br>
+            <br/>
             <div class="form-group" id="description">
                 <mat-form-field hintLabel="Max 200 caractères" appearance="fill">
                     <mat-label>Description</mat-label>
@@ -61,8 +61,8 @@
                     <div class="alert alert-danger" [hidden]="articleForm.controls.description.valid"></div>
                 </mat-form-field>
             </div>
-            <br>
-            <br>
+            <br/>
+            <br/>
 
 
             <div class="form-group">
@@ -83,6 +83,7 @@
                 </button> 
                 <br>
            </mat-card-footer>
+        <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
             
         </mat-card>
         </form>  
@@ -106,6 +107,7 @@
                     <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
                 </div>
                 <div mat-line> {{submittedModel.description}} </div>
+                <br />
                 <div mat-line id="content" [innerHTML]="submittedModel.content"></div>
             </mat-card-content>
             
@@ -113,7 +115,9 @@
             <button mat-button id="edit" [disabled]="editClicked"
             (click)="submitted=false;edit=true;editClicked=true;submitClicked=false;">Editer</button>
         </mat-card>
-                                
+        
+        <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
+        
         
     </div>    
 </div>

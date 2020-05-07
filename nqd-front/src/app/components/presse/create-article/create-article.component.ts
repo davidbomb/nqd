@@ -35,7 +35,9 @@ export class CreateArticleComponent implements OnInit {
   editClicked: boolean = false;
   /** Fichier image uploadé par l'user */
   selectedFile: ImageSnippet;
-
+  /** Boolean to display loading when necessary */
+  loading: boolean = false; 
+  /** Rich text Editor */
   public Editor = ClassicEditor;
   
   constructor(private formBuilder: FormBuilder,
@@ -57,6 +59,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: Article, valid: boolean }) {
+    this.loading = true;
     if(!this.edit) {
       this.submitClicked = true
       this.editClicked = false; 
@@ -64,6 +67,7 @@ export class CreateArticleComponent implements OnInit {
       console.log(value);
       this.articleService.saveArticle(value).subscribe(
         res => {
+          this.loading = false;
           this.toastr.success("L'article à bien été enregistré");
           this.submitted = true;
           this.submittedModel = value;
@@ -71,6 +75,7 @@ export class CreateArticleComponent implements OnInit {
           
         },
         error => {
+          this.loading = false;
           this.toastr.error("L'article n'à pas pu être enregistré", error.status)
         }
       )
@@ -81,12 +86,14 @@ export class CreateArticleComponent implements OnInit {
 
       this.articleService.updateArticle(value, this.submittedModel._id).subscribe(
         res => {
+          this.loading = false;
           this.toastr.success("L'article à bien été mis à jour");
           this.submitted = true;
           this.submittedModel = value; 
           this.submittedModel._id = res._id;   
         },
         error => {
+          this.loading = false;
           this.toastr.error("L'article n'à pas pu être mis à jour", error.status)
         }
       )
