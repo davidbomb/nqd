@@ -15,13 +15,13 @@
                 <div class="alert alert-success"></div>
             </div>
             <div mat-line> {{article.description}} </div>
-            <div mat-line id="content"><p>{{article.content}}</p></div>
+            <div mat-line id="content" [innerHTML]="article.content"></div>
             <div mat-line><h5><i id="date">{{article.date}}</i></h5></div>
         </mat-card-content>
         
         <mat-card-actions id="actions">
-            <button mat-button id="update">Modifier</button>
-            <button mat-button id="delete">Supprimer</button>
+            <button mat-button id="update" (click)="editClicked=true;" [disabled]="editClicked">Modifier</button>
+            <button mat-button id="delete" (click)="deleteClicked=true;" [disabled]="deleteClicked">Supprimer</button>
         </mat-card-actions>
     </mat-card>
     <mat-divider></mat-divider> 

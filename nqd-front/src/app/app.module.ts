@@ -60,6 +60,9 @@ import { ArticleService } from './services/article.service';
 import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
+
 
 @NgModule({
   declarations: [
@@ -110,7 +113,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CKEditorModule
 
   ],
  

@@ -13,7 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ArticlesListComponent implements OnInit {
 
-
+  editClicked: boolean = false;
+  deleteClicked: boolean = false;
 
   articles: Array<Article>;
 

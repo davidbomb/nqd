@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
 import { ToastrService } from 'ngx-toastr';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -26,10 +27,16 @@ export class CreateArticleComponent implements OnInit {
   submittedModel: Article; 
   /** Pour choisir d'afficher ou non le preview de l'article crée */
   submitted: boolean = false;
+  /** Pour desactiver le boutton Sauvegarder */
+  submitClicked: boolean = false;
   /** Pour savoir si on est en mode edit ou create */
   edit: boolean = false;
+  /** Pour desactiver le boutton Sauvegarder */
+  editClicked: boolean = false;
   /** Fichier image uploadé par l'user */
   selectedFile: ImageSnippet;
+
+  public Editor = ClassicEditor;
   
   constructor(private formBuilder: FormBuilder,
               private articleService: ArticleService,
@@ -51,6 +58,7 @@ export class CreateArticleComponent implements OnInit {
 
   onSubmit({ value, valid }: { value: Article, valid: boolean }) {
     if(!this.edit) {
+      this.submitClicked = true
       value.image = this.model.image;
       console.log(value);
       this.articleService.saveArticle(value).subscribe(
@@ -58,13 +66,16 @@ export class CreateArticleComponent implements OnInit {
           this.toastr.success("L'article à bien été enregistré");
           this.submitted = true;
           this.submittedModel = value;
-          this.submittedModel._id = res._id;    
+          this.submittedModel._id = res._id;   
+          this.editClicked = false; 
         },
         err => {
           this.toastr.error("L'article n'à pas pu être enregistré", err.code)
         }
       )
     } else if(this.edit) {
+      this.editClicked = true;
+      this.submitClicked = false;
       value.image = this.model.image;
       this.articleService.updateArticle(value, this.submittedModel._id).subscribe(
         res => {
