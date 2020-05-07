@@ -71,11 +71,14 @@ def save_article():
 @articles_api.route('/articles/<id>', methods=['PUT'])
 def update_article(id):
     article = request.get_json()
+    print(article)
     ## TO DO: Verification article conforme
     if articleCollection.find_one({"_id":ObjectId(id)}) == None:
         return ('Article not found', 404)
-    
-    updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'], 'image':article['image'] }})  
+    if article['image'] == None:
+        updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'], 'image':None }})  
+    else: 
+        updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'], 'image':article['image'] }})  
     # shaping the data to send back to the Front-End
     updated_article = article
     updated_article['_id'] = str(id)

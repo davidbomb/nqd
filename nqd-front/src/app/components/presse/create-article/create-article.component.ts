@@ -59,7 +59,8 @@ export class CreateArticleComponent implements OnInit {
   onSubmit({ value, valid }: { value: Article, valid: boolean }) {
     if(!this.edit) {
       this.submitClicked = true
-      value.image = this.model.image;
+      this.editClicked = false; 
+      value.image = this.model.image || null;
       console.log(value);
       this.articleService.saveArticle(value).subscribe(
         res => {
@@ -67,16 +68,17 @@ export class CreateArticleComponent implements OnInit {
           this.submitted = true;
           this.submittedModel = value;
           this.submittedModel._id = res._id;   
-          this.editClicked = false; 
+          
         },
         err => {
           this.toastr.error("L'article n'à pas pu être enregistré", err.code)
         }
       )
     } else if(this.edit) {
-      this.editClicked = true;
       this.submitClicked = false;
+      this.editClicked = false; 
       value.image = this.model.image;
+
       this.articleService.updateArticle(value, this.submittedModel._id).subscribe(
         res => {
           this.toastr.success("L'article à bien été mis à jour");

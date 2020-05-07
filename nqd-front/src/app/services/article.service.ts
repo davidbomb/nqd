@@ -28,6 +28,9 @@ export class ArticleService {
   }
 
   updateArticle(article, id) {
+    if(!article.image) {
+      article.image = null; 
+    }
     return this.http.put<Article>('http://localhost:5000/articles/' + id, article);
 
   }
