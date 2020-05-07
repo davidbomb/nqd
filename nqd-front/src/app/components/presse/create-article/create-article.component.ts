@@ -33,10 +33,12 @@ export class CreateArticleComponent implements OnInit {
   edit: boolean = false;
   /** Pour desactiver le boutton Sauvegarder */
   editClicked: boolean = false;
-  /** Fichier image uploadé par l'user */
+  /** Fichier image uploadé par l'user + metadata */
   selectedFile: ImageSnippet;
   /** Boolean to display loading when necessary */
-  loading: boolean = false; 
+  loading: boolean = false;   
+  /** Boolean to display loading on the image upload */
+  imageLoading: boolean = false; 
   /** Rich text Editor */
   public Editor = ClassicEditor;
   
@@ -106,6 +108,7 @@ export class CreateArticleComponent implements OnInit {
    * @param imageInput 
    */
   processFile(imageInput: any) {
+    this.imageLoading = true;
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
@@ -120,6 +123,7 @@ export class CreateArticleComponent implements OnInit {
 
 
   onSuccess() {
+    this.imageLoading = false;
     this.selectedFile.pending = false;
     this.selectedFile.status = 'ok';
   }

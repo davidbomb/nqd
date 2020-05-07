@@ -29,18 +29,13 @@
                         <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
                              [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
                         </div>
-                      
-                        <div *ngIf="selectedFile.pending" class="img-loading-overlay">
-                          <div class="img-spinning-circle"></div>
-                        </div>
-                      
                         <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
-                        <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Impossible d'uploader cette image</div>
-                        
+                        <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Impossible d'uploader cette image</div>        
                     </div>
-
+                    <div *ngIf="imageLoading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
                 </mat-card>
             </div>
+            <br>
 
             <div class="form-group" id="category">
                 <mat-form-field hintLabel="Max 25 caractères" appearance="fill">
@@ -51,7 +46,7 @@
                     <div class="alert alert-danger" [hidden]="articleForm.controls.category.valid"></div>
                 </mat-form-field>
             </div>
-            <br/>
+            <br>
             <div class="form-group" id="description">
                 <mat-form-field hintLabel="Max 200 caractères" appearance="fill">
                     <mat-label>Description</mat-label>
@@ -61,8 +56,8 @@
                     <div class="alert alert-danger" [hidden]="articleForm.controls.description.valid"></div>
                 </mat-form-field>
             </div>
-            <br/>
-            <br/>
+            <br>
+            <br>
 
 
             <div class="form-group">
@@ -82,13 +77,13 @@
                         Sauvegarder
                 </button> 
                 <br>
-           </mat-card-footer>
-        <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
+            </mat-card-footer>
+            <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
             
         </mat-card>
         </form>  
     </div>
-
+    <br>
 
 
     <div *ngIf="submitted">
@@ -107,11 +102,11 @@
                     <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
                 </div>
                 <div mat-line> {{submittedModel.description}} </div>
-                <br />
+                <br>
                 <div mat-line id="content" [innerHTML]="submittedModel.content"></div>
             </mat-card-content>
             
-            <br />
+            <br>
             <button mat-button id="edit" [disabled]="editClicked"
             (click)="submitted=false;edit=true;editClicked=true;submitClicked=false;">Editer</button>
         </mat-card>
@@ -121,3 +116,4 @@
         
     </div>    
 </div>
+<div><br></div>
