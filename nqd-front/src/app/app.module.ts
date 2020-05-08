@@ -36,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './components/login/login.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RegisterComponent } from './components/register/register.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { HeaderComponent } from './components/header/header.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -59,6 +60,7 @@ import { ArticlesListComponent } from './components/presse/articles-list/article
 import { ArticleService } from './services/article.service';
 import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
+import { EthiqueEtCharteComponent } from './components/nos-quartier-demain/ethique-et-charte/ethique-et-charte.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,8 @@ import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-
     // PresseComponent,
     ContactComponent,
     ArticlesListComponent,
-    CreateArticleComponent 
+    CreateArticleComponent,
+    EthiqueEtCharteComponent 
   ],
   imports: [
     BrowserModule,
@@ -108,7 +111,8 @@ import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-
     MatCheckboxModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule
 
   ],
  

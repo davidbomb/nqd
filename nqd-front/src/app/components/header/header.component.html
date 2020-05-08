@@ -1,13 +1,14 @@
-<nav class="nav-router" style="background-color: #1976d2;">
+<nav class="nav-router">
 
   <button mat-button style="width: 100px!important; height: 70px!important;" class="router" routerLink="/accueil" routerLinkActive="active">
     <img src="assets/logo/nqd-logo.png" width="80%" height="80%">
   </button>
 
-  <button mat-button [matMenuTriggerFor]="menu1">Nos quartiers demain</button>
+  <button mat-button [matMenuTriggerFor]="menu1" >Nos quartiers demain</button>
   <mat-menu #menu1="matMenu" yPosition="below">
     <button mat-menu-item class="router" routerLink="/qui-sommes-nous" routerLinkActive="active">Qui sommes-nous</button>
     <button mat-menu-item class="router" routerLink="/notre-fonctionnement" routerLinkActive="active">Notre fonctionnement</button>
+    <button mat-menu-item class="router" routerLink="/ethique-et-charte" routerLinkActive="active">Ethique et charte</button>
     <button mat-menu-item class="router" routerLink="/nos-actions" routerLinkActive="active">Nos actions</button>
     <button mat-menu-item class="router" routerLink="/nous-aider" routerLinkActive="active">Nous aider</button>
   </mat-menu>
@@ -56,6 +57,7 @@
 
 </nav>
 
+<mat-divider></mat-divider>
 
 
 <router-outlet></router-outlet>

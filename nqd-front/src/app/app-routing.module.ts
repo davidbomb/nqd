@@ -11,6 +11,8 @@ import { NosActionsComponent } from './components/nos-quartier-demain/nos-action
 import { NousAiderComponent } from './components/nos-quartier-demain/nous-aider/nous-aider.component'
 import { QuiSommesNousComponent } from './components/nos-quartier-demain/qui-sommes-nous/qui-sommes-nous.component'
 import { NotreFonctionnementComponent } from './components/nos-quartier-demain/notre-fonctionnement/notre-fonctionnement.component'
+import { EthiqueEtCharteComponent } from './components/nos-quartier-demain/ethique-et-charte/ethique-et-charte.component'
+
 
 //Rubrique : L'Hopital privé saint barnabé
 import { HopitalComponent } from './components/hopital-prive-saint-barnabe/hopital/hopital.component'
@@ -35,7 +37,7 @@ import { CreateArticleComponent } from './components/presse/create-article/creat
 
 
 const routes: Routes = [
-  { path: '', component: AccueilComponent },
+  { path: 'accueil', component: AccueilComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'nous-aider', component: NousAiderComponent },
   { path: 'qui-sommes-nous', component: QuiSommesNousComponent },
   { path: 'notre-fonctionnement', component: NotreFonctionnementComponent },
+  { path: 'ethique-et-charte', component: EthiqueEtCharteComponent },
 
   { path: 'hopital', component: HopitalComponent },
   { path: 'impact-environnementaux-et-urbanistique', component: ImpactEnvironnementauxEtUrbanistiqueComponent },
