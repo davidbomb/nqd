@@ -1,0 +1,13 @@
+#delete {
+    background-color: rgb(255, 91, 91);
+}
+
+.modal-footer {
+    position: relative;
+    margin-left: 50%; 
+}
+
+.lds-spinner {
+    position: relative;
+    margin-left: 40%;
+}

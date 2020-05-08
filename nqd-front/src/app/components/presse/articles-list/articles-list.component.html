@@ -1,5 +1,6 @@
 <mat-list>
-    <div mat-subheader>Liste des articles</div>
+    <!-- <div mat-subheader>Liste des articles</div> -->
+    <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <mat-list-item *ngFor="let article of articles">
       <mat-icon mat-list-icon>Article</mat-icon>
       <mat-card class="article-card">
@@ -8,14 +9,20 @@
             <mat-card-subtitle><div mat-line> {{article.category}} </div></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
+            <div class="img-preview-container" *ngIf="article.image">
+                <div class="img-preview"
+                    [ngStyle]="{'background-image': 'url('+ article.image + ')'}">
+                </div>
+                <div class="alert alert-success"></div>
+            </div>
             <div mat-line> {{article.description}} </div>
-            <div mat-line id="content"><p>{{article.content}}</p></div>
+            <div mat-line id="content" [innerHTML]="article.content"></div>
             <div mat-line><h5><i id="date">{{article.date}}</i></h5></div>
         </mat-card-content>
         
         <mat-card-actions id="actions">
-            <button mat-button id="update">Modifier</button>
-            <button mat-button id="delete">Supprimer</button>
+            <button mat-button id="update" (click)="editClicked=true;" [disabled]="editClicked">Modifier</button>
+            <button mat-button id="delete" (click)="openDeleteArticleModal(article)" [disabled]="deleteClicked">Supprimer</button>
         </mat-card-actions>
     </mat-card>
     <mat-divider></mat-divider> 

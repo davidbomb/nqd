@@ -14,6 +14,29 @@
                 </mat-form-field>
             </div>
             <br>
+
+            <div>
+                <mat-card style="width:77%">
+                    <mat-label class="image-upload-container btn btn-bwm">
+                        <span mat-line>Uploader une Image &nbsp;&nbsp;</span>
+                        <input mat-line #imageInput formControlName="image"
+                            type="file"
+                            accept="image/*"
+                            (change)="processFile(imageInput)">
+                    </mat-label>
+                    <div *ngIf="selectedFile" class="img-preview-container">
+
+                        <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+                             [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+                        </div>
+                        <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
+                        <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Impossible d'uploader cette image</div>        
+                    </div>
+                    <div *ngIf="imageLoading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
+                </mat-card>
+            </div>
+            <br>
+
             <div class="form-group" id="category">
                 <mat-form-field hintLabel="Max 25 caractères" appearance="fill">
                     <mat-label>Categorie</mat-label>
@@ -36,32 +59,31 @@
             <br>
             <br>
 
-            <div class="form-group" id="content">
-                <mat-form-field appearance="fill" >
-                    <mat-label>Contenu</mat-label>
-                    <textarea matInput placeholder="Corps de l'article" 
-                    class="form-control content" formControlName="content"></textarea>
-                
-                    <div class="alert alert-danger" [hidden]="articleForm.controls.content.valid"></div>
-                </mat-form-field>
-            </div>
+
+            <div class="form-group">
+                    <label>Contenu</label>
+                    <ckeditor class="form-control content" formControlName="content"
+                            [editor]="Editor">
+                    </ckeditor>
+            </div>  
 
             <br>
             <mat-divider></mat-divider>
             
             <mat-card-footer>
                 <br>
-                <button mat-button type="submit" id="create" 
-                        [disabled]="!articleForm.valid">
+                <button mat-button type="submit" id="create"
+                        [disabled]="!articleForm.valid || submitClicked">
                         Sauvegarder
                 </button> 
                 <br>
-           </mat-card-footer>
+            </mat-card-footer>
+            <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
             
         </mat-card>
         </form>  
     </div>
-
+    <br>
 
 
     <div *ngIf="submitted">
@@ -71,15 +93,27 @@
                 <mat-card-title><div mat-line> {{submittedModel.title}}</div></mat-card-title>
                 <mat-card-subtitle><div mat-line> {{submittedModel.category}} </div></mat-card-subtitle>
             </mat-card-header>
+
             <mat-card-content class="content-preview">
+                <div class="img-preview-container" *ngIf="selectedFile">
+                    <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+                         [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+                    </div>
+                    <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"></div>
+                </div>
                 <div mat-line> {{submittedModel.description}} </div>
-                <div mat-line id="content"><p>{{submittedModel.content}}</p></div>
+                <br>
+                <div mat-line id="content" [innerHTML]="submittedModel.content"></div>
             </mat-card-content>
             
-            <br />
-            <button mat-button id="edit" (click)="submitted=false; edit=true">Editer</button>
+            <br>
+            <button mat-button id="edit" [disabled]="editClicked"
+            (click)="submitted=false;edit=true;editClicked=true;submitClicked=false;">Editer</button>
         </mat-card>
-                                
+        
+        <div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
+        
         
     </div>    
 </div>
+<div><br></div>

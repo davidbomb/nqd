@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Êtes vous sûr de vouloir supprimer cet article ?</h2>
+<div>
+<div *ngIf="loading" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>    
+</div>
+<div mat-dialog-actions class="modal-footer">
+    <button mat-button id="update" (click)="onCancel()" [disabled]="">Annuler</button>
+    <button mat-button id="delete" (click)="onDeleteArticle()" [disabled]="">Supprimer</button>
+</div>

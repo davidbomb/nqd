@@ -51,6 +51,8 @@ def get_article(id):
 @articles_api.route('/articles', methods=['POST'])
 def save_article():
     article_to_save = request.get_json()
+    # if article_to_save['image'] != None:
+    # utils.toByteArray(article_to_save['image'])
     ## TO DO: Verification article conforme
     
     today = date.today().strftime("%d/%m/%Y")
@@ -61,7 +63,6 @@ def save_article():
     # shaping the data to send back to the Front-End
     saved_article = article_to_save
     saved_article['_id'] = str(saved_article_id)
-    print(saved_article)
     return (json.dumps(saved_article, default = datetime_to_string), 201)
 
 
@@ -71,8 +72,10 @@ def update_article(id):
     ## TO DO: Verification article conforme
     if articleCollection.find_one({"_id":ObjectId(id)}) == None:
         return ('Article not found', 404)
-    
-    updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'] }})  
+    if article['image'] == None:
+        updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'], 'image':None }})  
+    else: 
+        updated_article_id = articleCollection.update({"_id":ObjectId(id)},{'$set':{'title':article['title'], 'category':article['category'], 'description':article['description'], 'content':article['content'], 'image':article['image'] }})  
     # shaping the data to send back to the Front-End
     updated_article = article
     updated_article['_id'] = str(id)

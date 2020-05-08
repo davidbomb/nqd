@@ -60,7 +60,16 @@ import { ArticlesListComponent } from './components/presse/articles-list/article
 import { ArticleService } from './services/article.service';
 import { CreateArticleComponent } from './components/presse/create-article/create-article.component';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
+<<<<<<< HEAD
 import { EthiqueEtCharteComponent } from './components/nos-quartier-demain/ethique-et-charte/ethique-et-charte.component';
+=======
+import { ToastrModule } from 'ngx-toastr';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { UpdateArticleComponent } from './components/presse/update-article/update-article.component';
+import { DeleteArticleComponent } from './components/presse/delete-article/delete-article.component';
+
+
+>>>>>>> 92cb6d87dc4509ee210d81097ce0a7549f38e593
 
 @NgModule({
   declarations: [
@@ -91,7 +100,15 @@ import { EthiqueEtCharteComponent } from './components/nos-quartier-demain/ethiq
     ContactComponent,
     ArticlesListComponent,
     CreateArticleComponent,
+<<<<<<< HEAD
     EthiqueEtCharteComponent 
+=======
+    UpdateArticleComponent,
+    DeleteArticleComponent, 
+  ],
+  entryComponents: [
+    DeleteArticleComponent,
+>>>>>>> 92cb6d87dc4509ee210d81097ce0a7549f38e593
   ],
   imports: [
     BrowserModule,
@@ -112,7 +129,12 @@ import { EthiqueEtCharteComponent } from './components/nos-quartier-demain/ethiq
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+<<<<<<< HEAD
     MatExpansionModule
+=======
+    ToastrModule.forRoot(),
+    CKEditorModule
+>>>>>>> 92cb6d87dc4509ee210d81097ce0a7549f38e593
 
   ],
  
